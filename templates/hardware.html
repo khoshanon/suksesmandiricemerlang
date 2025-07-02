@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Produk Hardware</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar a {
+            color: black !important;
+            font-weight: 500;
+        }
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+        .sticky-top {
+            z-index: 1030;
+        }
+    </style>
+</head>
+<body>
+<!-- Sticky Header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4 py-3 sticky-top">
+    <a class="navbar-brand" href="/">
+        <img src="{{ url_for('static', filename='images/smc-logo.jpeg') }}" alt="Logo" height="40">
+    </a>
+    <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown">Produk</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/hardware">Hardware</a></li>
+                <li><a class="dropdown-item" href="/software">Software</a></li>
+                <li><a class="dropdown-item" href="/service">Service</a></li>
+            </ul>
+        </div>
+        <a class="nav-link" href="/tentang">Tentang Kami</a>
+        <a class="nav-link" href="/company-profile">Company Profile</a>
+        <a class="nav-link" href="/contact_us">Contact Us</a>
+    </div>
+    <form class="d-flex ms-auto" action="/search" method="get">
+        <input class="form-control me-2" type="search" name="query" placeholder="Cari disini">
+        <button class="btn btn-outline-dark" type="submit">🔍</button>
+    </form>
+</nav>
+
+<!-- Main Layout -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Filter Sidebar -->
+        <aside class="col-md-2">
+            <h5 class="fw-bold">CARI BERDASARKAN MERK</h5>
+            <form method="get" style="font-size: 18px;">
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="brand" value="Dell"
+                           {% if 'Dell' in selected_brands %}checked{% endif %}
+                    onchange="this.form.submit()"/>
+                    <label>Dell</label>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="brand" value="HP"
+                           {% if 'HP' in selected_brands %}checked{% endif %}
+                    onchange="this.form.submit()"/>
+                    <label>HP</label>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="brand" value="Hitachi"
+                           {% if 'Hitachi' in selected_brands %}checked{% endif %}
+                    onchange="this.form.submit()"/>
+                    <label>Hitachi</label>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="brand" value="Western Digital"
+                           {% if 'Western Digital' in selected_brands %}checked{% endif %}
+                    onchange="this.form.submit()"/>
+                    <label>Western Digital</label>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="brand" value="Seagate"
+                           {% if 'Seagate' in selected_brands %}checked{% endif %}
+                    onchange="this.form.submit()"/>
+                    <label>Seagate</label>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" name="brand" value="Samsung"
+                           {% if 'Samsung' in selected_brands %}checked{% endif %}
+                    onchange="this.form.submit()"/>
+                    <label>Samsung</label>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Product Listing -->
+        <section class="col-md-10">
+            <h2 class="mb-4">Produk Hardware</h2>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-2 mb-4 text-center">
+                    <img src="{{ url_for('static', filename='images/' + product['Picture'].replace('.png', '.jpg')) }}" class="product-img" alt="{{ product['Name'] }}">
+                    <div class="fw-bold mt-2">{{ product['Name'] }}</div>
+                    <div class="text-dark fw-bold">{{ product['Price'] }}</div>
+                </div>
+                {% else %}
+                <p class="text-center text-muted">Tidak ada produk untuk ditampilkan.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Layanan Kami</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar a {
+            color: black !important;
+            font-weight: 500;
+        }
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .service-card {
+        width: 100%;
+        max-width: 350px; /* Increased from 300px */
+        height: 380px;     /* Increased from 300px */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        }
+    .service-card img {
+        width: 100%;
+        height: 220px;     /* Increased from 180px */
+        object-fit: contain;
+        }
+        .gradient-hero {
+        background: linear-gradient(to right, #f26b12, #ff914d);
+        height: 300px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem; /* Increased from 2rem to 3rem */
+        font-weight: 600;
+        font-family: 'Segoe UI', 'Helvetica Neue', sans-serif; /* Professional font */
+        text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Header/Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-4 py-3 sticky-top">
+    <a class="navbar-brand" href="/">
+        <img src="{{ url_for('static', filename='images/smc-logo.jpeg') }}" alt="Logo" height="40">
+    </a>
+    <div class="navbar-nav">
+        <a class="nav-link" href="/">Home</a>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown">Produk</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/hardware">Hardware</a></li>
+                <li><a class="dropdown-item" href="/software">Software</a></li>
+                <li><a class="dropdown-item" href="/service">Service</a></li>
+            </ul>
+        </div>
+        <a class="nav-link" href="/tentang">Tentang Kami</a>
+        <a class="nav-link" href="/company-profile">Company Profile</a>
+        <a class="nav-link" href="/contact_us">Contact Us</a>
+    </div>
+</nav>
+
+<!-- Hero Banner -->
+<div class="gradient-hero">
+    Layanan IT Profesional dari SMC
+</div>
+
+<!-- Services List -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Layanan yang Kami Tawarkan</h2>
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="service-card shadow-sm p-3 bg-white">
+                <img src="{{ url_for('static', filename='images/pemasangan-cctv.png') }}" alt="Pemasangan CCTV">
+                <h5 class="mt-3">Pemasangan CCTV</h5>
+                <p>Pemasangan CCTV berkualitas tinggi untuk keamanan rumah dan kantor Anda.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="service-card shadow-sm p-3 bg-white">
+                <img src="{{ url_for('static', filename='images/maintenance-it.png') }}" alt="Kontrak Maintenance IT">
+                <h5 class="mt-3">Kontrak Maintenance IT</h5>
+                <p>Layanan perawatan IT berkala untuk memastikan sistem berjalan optimal.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="service-card shadow-sm p-3 bg-white">
+                <img src="{{ url_for('static', filename='images/pemasangan-hardware.png') }}" alt="Pemasangan Hardware">
+                <h5 class="mt-3">Pemasangan Hardware</h5>
+                <p>Instalasi hardware IT yang telah Anda beli, cepat dan profesional.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Terms & Conditions -->
+<div class="container mt-5">
+    <h4 class="fw-bold">Syarat dan Ketentuan Layanan:</h4>
+    <ul>
+        <li>Layanan hanya tersedia setelah konsultasi dan persetujuan jadwal.</li>
+        <li>Garansi 30 hari untuk semua layanan pemasangan.</li>
+        <li>Pembayaran dilakukan sebelum atau pada saat layanan diberikan.</li>
+        <li>Kerusakan akibat kelalaian pengguna tidak termasuk dalam garansi.</li>
+    </ul>
+</div>
+
+<!-- Commitment Statement -->
+<div class="container mt-5 mb-5">
+    <div class="alert alert-warning text-center fs-5 fw-bold">
+        Kami berjanji untuk selalu memberikan service yang terbaik kepada seluruh pelanggan kami.
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
